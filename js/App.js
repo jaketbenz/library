@@ -257,52 +257,24 @@ submitButton.addEventListener("click", (e) => {
 });
 
 function removeArticles(string) {
-	words = string.split(" ");
+	let words = string.split(" ");
 	if (words.length <= 1) {
 		return string;
 	}
-	if (words[0] == "a" || "an" || "the") {
-		return words.split(1).join(" ");
+	if (words[0] == "a" || words[0] == "an" || words[0] == "the") {
+		return words.splice(1).join(" ");
 	}
 	return string;
 }
-// const sortBook = (a, b) => {
-// 	let bookA = a.toLowerCase();
-// 	let bookB = b.toLowerCase();
 
-// 	bookA.removeArticles(bookA);
-// 	bookB.removeArticles(bookB);
-
-// 	if (bookA > bookB) {
-// 		return 1;
-// 	}
-// 	if (bookA < bookB) {
-// 		return -1;
-// 	}
-// 	return 0;
-// };
-
-const sortButton = document.querySelector(".sortButton");
-sortButton.addEventListener("click", (e) => {
-	e.preventDefault();
-	// let index = Object.keys(myLibrary).sort();
-	// index.forEach((key) => {
-	// 	console.log(myLibrary[key]);
-	// });
-	// for (i = 0; i < myLibrary.length; i++) {
-	// 	console.log(myLibrary[i].title);
-	// }
-	// const sortedLibrary = Object.keys(myLibrary).sort((a, b) => {
-	// 	return myLibrary[a].title - myLibrary[b].title;
-	// });
-	// .map((e) => e[0]);
-	// console.log(sortedLibrary);
+const sortBook = () => {
+	console.log(myLibrary);
 	myLibrary.sort((a, b) => {
 		let bookA = a.title.toLowerCase();
 		let bookB = b.title.toLowerCase();
 
-		bookA.removeArticles(bookA);
-		bookB.removeArticles(bookB);
+		bookA = removeArticles(bookA);
+		bookB = removeArticles(bookB);
 
 		if (bookA > bookB) {
 			return 1;
@@ -312,4 +284,11 @@ sortButton.addEventListener("click", (e) => {
 		}
 		return 0;
 	});
+};
+const sortButton = document.querySelector(".sortButton");
+sortButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	clearLibrary();
+	sortBook();
+	createBook(myLibrary);
 });
