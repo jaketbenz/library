@@ -1,0 +1,62 @@
+:root {
+	--primary-light: #fefefe;
+	--secondary-light: #e5e7eb;
+	/* --primary-dark: #1f2937; */
+}
+html,
+body {
+	background-color: #81d8d0 !important;
+}
+.container {
+	min-height: 100vh;
+	min-width: 100vw;
+	padding: 0 !important;
+}
+.library__body {
+	/* min-width: 80%;
+	min-height: 80%; */
+	background-color: var(--primary-light);
+}
+/* Add Book bar */
+.addBookForm {
+	background-color: var(--secondary-light);
+}
+.modal-dialog {
+	background-color: var(--secondary-light);
+}
+.card {
+	/* width: 12rem; */
+	height: 20rem !important;
+}
+.card-body {
+	height: 100%;
+}
+.card-title,
+.card-text,
+.buttonContainer {
+	height: 25%;
+	margin: 0;
+}
+.buttonContainer > button {
+	min-width: 50%;
+}
+/* .btn {
+	min-width: 50%;
+} */
+.read {
+	border: 3px solid goldenrod !important;
+	background-color: var(--secondary-light) !important;
+}
+.unread {
+	border: 3px solid maroon !important;
+}
+.footer {
+	width: 100%;
+	/* position: absolute; */
+	bottom: 0;
+	color: var(--primary-light);
+	text-shadow: rgba(0, 0, 0, 0.24) 0px 10px 8px;
+}
+.footer__link {
+	color: var(--primary-light);
+}
