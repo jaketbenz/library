@@ -121,6 +121,9 @@ class Book {
 		this.pages = pages;
 		this.read = read;
 	}
+	setRead(read) {
+		this.read = read;
+	}
 }
 
 const titleInput = document.querySelector(".bookTitle__input");
@@ -131,7 +134,6 @@ const readInput = document.querySelector(".bookRead__input");
 const libraryShelf = document.querySelector(".library__body");
 
 const getReadInput = () => {
-	console.log(document.querySelector(".bookRead__input").checked);
 	if (document.querySelector(".bookRead__input").checked === true) {
 		return true;
 	} else {
@@ -145,7 +147,6 @@ const addBook = () => {
 	let pages = pagesInput.value;
 	let read = getReadInput();
 	let newBook = new Book(title, author, pages, read);
-	// console.log(newBook);
 	if (title !== "") {
 		myLibrary.push(newBook);
 	} else {
@@ -153,40 +154,40 @@ const addBook = () => {
 	}
 };
 
+const addBookForm = document.querySelector(".addBookForm");
+addBookForm.onsubmit = addBook;
+
 const changeRead = (e) => {
 	confirm("Do you want to change read status?");
-	let changedBook = e.target;
-	if (
-		changedBook.parentElement.parentElement.parentElement.classList.contains(
-			"read"
-		)
-	) {
-		changedBook.parentElement.parentElement.parentElement.classList.remove(
-			"read"
-		);
-		changedBook.parentElement.parentElement.parentElement.classList.add(
-			"unread"
-		);
-		changedBook.textContent = "Unread";
-	} else {
-		changedBook.parentElement.parentElement.parentElement.classList.remove(
-			"unread"
-		);
-		changedBook.parentElement.parentElement.parentElement.classList.add(
-			"read"
-		);
-		changedBook.textContent = "Read";
+	const book = e.target.parentElement.parentElement.parentElement;
+	let changedBook = new Book(
+		myLibrary[book.id].title,
+		myLibrary[book.id].author,
+		myLibrary[book.id].pages
+	);
+	if (book.classList.contains("read")) {
+		book.classList.remove("read");
+		book.classList.add("unread");
+		e.target.classList.remove("button__read");
+		e.target.classList.add("button__unread");
+		e.target.textContent = "Unread";
+		changedBook.setRead(false);
+	} else if (book.classList.contains("unread")) {
+		book.classList.remove("unread");
+		book.classList.add("read");
+		e.target.classList.remove("button__unread");
+		e.target.classList.add("button__read");
+		e.target.textContent = "Read";
+		changedBook.setRead(true);
 	}
+	console.log(changedBook);
 };
 
 const removeBook = (e) => {
 	confirm("Do you want to remove book?");
-	let removedBook = e.target;
-	removedBook.parentElement.parentElement.parentElement.remove();
+	let book = e.target.parentElement.parentElement.parentElement;
+	book.remove();
 };
-
-const addBookForm = document.querySelector(".addBookForm");
-addBookForm.onsubmit = addBook;
 
 const clearForm = () => {
 	document.querySelector(".addBookForm").reset();
@@ -247,15 +248,6 @@ const createBook = (myLibrary) => {
 };
 createBook(myLibrary);
 
-const submitButton = document.querySelector(".submitButton");
-submitButton.addEventListener("click", (e) => {
-	e.preventDefault();
-	addBook();
-	clearForm();
-	clearLibrary();
-	createBook(myLibrary);
-});
-
 function removeArticles(string) {
 	let words = string.split(" ");
 	if (words.length <= 1) {
@@ -267,8 +259,7 @@ function removeArticles(string) {
 	return string;
 }
 
-const sortBook = () => {
-	console.log(myLibrary);
+const sortBookTitle = () => {
 	myLibrary.sort((a, b) => {
 		let bookA = a.title.toLowerCase();
 		let bookB = b.title.toLowerCase();
@@ -285,10 +276,45 @@ const sortBook = () => {
 		return 0;
 	});
 };
-const sortButton = document.querySelector(".sortButton");
-sortButton.addEventListener("click", (e) => {
+const sortBookAuthor = () => {
+	myLibrary.sort((a, b) => {
+		if (a.author.toLowerCase() > b.author.toLowerCase()) {
+			return 1;
+		}
+		if (a.author.toLowerCase() < b.author.toLowerCase()) {
+			return -1;
+		}
+		if (a.title.toLowerCase() > b.title.toLowerCase()) {
+			return 1;
+		}
+		if (a.title.toLowerCase() < b.title.toLowerCase()) {
+			return -1;
+		}
+		return 0;
+	});
+};
+
+const sortBookTitleButton = document.querySelector(".sortBook__title");
+sortBookTitleButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	clearLibrary();
-	sortBook();
+	sortBookTitle();
+	createBook(myLibrary);
+});
+
+const sortBookAuthorButton = document.querySelector(".sortBook__author");
+sortBookAuthorButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	clearLibrary();
+	sortBookAuthor();
+	createBook(myLibrary);
+});
+
+const submitButton = document.querySelector(".submitButton");
+submitButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	addBook();
+	clearForm();
+	clearLibrary();
 	createBook(myLibrary);
 });

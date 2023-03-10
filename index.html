@@ -29,27 +29,58 @@
                 class="libraryContainer d-flex flex-column align-items-center col-12 my-5">
                 <div
                     class="library__header d-flex justify-content-center col-10 my-3">
-                    <button class="sortButton btn btn-dark" type="button">
-                        <!--
-                        onclick="sortBook()" -->
+                    <!-- <button class="sortButton btn btn-dark" type="button">
+                        Sort Book
+                    </button> -->
+                    <button class="btn btn-dark" type="button"
+                        data-bs-toggle="modal" data-bs-target="#sortModal">
                         Sort Book
                     </button>
+                    <div class="modal fade" id="sortModal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">
+                                        Sort Library
+                                    </h1>
+                                    <button class="btn-close" type="button"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div
+                                    class="modal-footer d-flex justify-content-center">
+                                    <button class="sortBook__title btn btn-dark"
+                                        type="button" data-bs-dismiss="modal">
+                                        Sort by Title
+                                    </button>
+                                    <button
+                                        class="sortBook__author btn btn-dark"
+                                        type="button" data-bs-dismiss="modal">
+                                        Sort by Author
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h1 class="library__title text-center mx-5">Library
                     </h1>
+
                     <!-- Button trigger modal -->
                     <button class="btn btn-dark" type="button"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        data-bs-toggle="modal" data-bs-target="#addModal">
                         Add Book
                     </button>
-
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="addModal" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5"
-                                        id="exampleModalLabel">Add Book to
+                                        id="addModalLabel">Add Book to
                                         Library</h1>
                                     <button type="button" class="btn-close"
                                         data-bs-dismiss="modal"
@@ -102,22 +133,18 @@
                                                 Read?
                                             </label>
                                         </div>
-                                        <!-- <div class="text-center">
-                                            <button
-                                                class="submitButton btn btn-dark"
-                                                type="submit">
-                                                Submit
-                                            </button>
-                                        </div> -->
                                     </form>
                                 </div>
                                 <div
                                     class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-dark"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button"
-                                        class="submitButton btn btn-dark">Save
-                                        Book</button>
+                                    <button class="btn btn-dark" type="button"
+                                        data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button class="submitButton btn btn-dark"
+                                        type="button" data-bs-dismiss="modal">
+                                        Save Book
+                                    </button>
                                 </div>
                             </div>
                         </div>
