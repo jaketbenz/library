@@ -210,7 +210,7 @@ const createBook = (myLibrary) => {
 		const removeButton = document.createElement("button");
 
 		card.className =
-			"card text-center col-sm-3 col-md-4 col-lg-2 mx-4 my-3";
+			"card text-center col-sm-5 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mx-4 my-3";
 		card.setAttribute("id", arrayPosition);
 		card.dataset.num = arrayPosition;
 		cardBody.className = "card-body p-3";
