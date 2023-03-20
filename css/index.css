@@ -5,17 +5,50 @@
 }
 html,
 body {
-	background-color: #81d8d0 !important;
+	/* background-color: #81d8d0 !important; */
+	background-color: #dfc7ac !important;
 }
-.container {
+button {
+	background-color: #ebe8de;
+	border: none !important;
+	border-radius: 0.25rem !important;
+}
+.mainContainer {
 	min-height: 100vh;
 	min-width: 100vw;
 	padding: 0 !important;
 }
+.libraryContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 95vh;
+}
+.library__header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem;
+}
+.sort__button,
+.add__button {
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 8px;
+}
+.library__title {
+	text-shadow: rgba(0, 0, 0, 0.24) 0px 10px 8px;
+}
 .library__body {
-	/* min-width: 80%;
-	min-height: 80%; */
-	background-color: var(--primary-light);
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	height: 85vh;
+	overflow: auto;
+	/* background-color: var(--primary-light); */
+	/* background-color: #3b4229; */
+	background-image: url("../img/woodbackground.jpeg");
+	border: 1rem solid #300E00;
+	border-radius: 0.5rem;
 }
 /* Add Book bar */
 .addBookForm {
@@ -25,38 +58,170 @@ body {
 	background-color: var(--secondary-light);
 }
 .card {
-	/* width: 12rem; */
-	height: 20rem !important;
+	height: 20rem;
+	width: 15rem;
+	/* border-left: 0.5rem solid black !important; */
+	/* background-color: #58402f !important; */
+	background-image: url("../img/leatherbackground.jpeg");
+	color: white;
 }
 .card-body {
-	height: 100%;
 }
-.card-title,
-.card-text,
+.book__title,
+.book__author,
+.book__pages,
 .buttonContainer {
 	height: 25%;
 	margin: 0;
 }
-.buttonContainer > button {
-	min-width: 50%;
+.book__title {
+	font-style: italic;
 }
-/* .btn {
-	min-width: 50%;
-} */
+.button__container {
+	display: flex;
+	justify-content: center;
+	width: 10rem;
+}
+.button__read,
+.button__remove {
+}
 .read {
-	border: 3px solid goldenrod !important;
-	background-color: var(--secondary-light) !important;
+	border-left: 0.5rem solid #2a664d !important;
 }
 .unread {
-	border: 3px solid maroon !important;
+	border-left: 0.5rem solid #7d2827 !important;
 }
 .footer {
+	display: flex;
+	justify-content: center;
 	width: 100%;
 	/* position: absolute; */
 	bottom: 0;
+	margin-top: 1rem;
 	color: var(--primary-light);
 	text-shadow: rgba(0, 0, 0, 0.24) 0px 10px 8px;
 }
 .footer__link {
 	color: var(--primary-light);
+}
+
+@media screen and (max-width: 480px) {
+	.card {
+		height: 15rem !important;
+		width: 10rem;
+		margin: 1rem;
+		text-align: center;
+	}
+	.card-title {
+		font-size: 1rem;
+	}
+	.card-text {
+		font-size: 0.75rem;
+	}
+	.button__container {
+		display: flex;
+		flex-direction: row;
+	}
+	.button__read,
+	.button__remove {
+		width: 3rem;
+		margin: 0.25rem;
+		font-size: 0.5rem !important;
+	}
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	.card {
+		height: 15rem !important;
+		width: 12rem;
+		margin: 1rem;
+		text-align: center;
+	}
+	.card-title {
+		font-size: 1.25rem;
+	}
+	.card-text {
+		font-size: 1rem;
+	}
+	.button__container {
+		display: flex;
+		flex-direction: row;
+	}
+	.button__read,
+	.button__remove {
+		width: 4rem;
+		margin: 0.25rem;
+		font-size: 0.75rem !important;
+	}
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.card {
+		height: 15rem !important;
+		width: 13rem;
+		margin: 1rem;
+		text-align: center;
+	}
+	.card-title {
+		font-size: 1.25rem;
+	}
+	.card-text {
+		font-size: 1rem;
+	}
+	.button__container {
+		display: flex;
+		flex-direction: row;
+	}
+	.button__read,
+	.button__remove {
+		width: 4rem;
+		margin: 0.25rem;
+		font-size: 0.75rem !important;
+	}
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+	.card {
+		height: 15rem !important;
+		width: 13rem;
+		margin: 1rem;
+		text-align: center;
+	}
+	.card-title {
+		font-size: 1.25rem;
+	}
+	.card-text {
+		font-size: 1rem;
+	}
+	.button__container {
+		display: flex;
+		flex-direction: row;
+	}
+	.button__read,
+	.button__remove {
+		width: 4rem;
+		margin: 0.25rem;
+		font-size: 0.75rem !important;
+	}
+}
+@media screen and (min-width: 1201px) {
+	.card {
+		height: 15rem !important;
+		width: 13rem;
+		margin: 1rem;
+		text-align: center;
+	}
+	.card-title {
+		font-size: 1.25rem;
+	}
+	.card-text {
+		font-size: 1rem;
+	}
+	.button__container {
+		display: flex;
+		flex-direction: row;
+	}
+	.button__read,
+	.button__remove {
+		width: 4rem;
+		margin: 0.25rem;
+		font-size: 0.75rem !important;
+	}
 }

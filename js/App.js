@@ -147,7 +147,7 @@ const addBook = () => {
 	let pages = pagesInput.value;
 	let read = getReadInput();
 	let newBook = new Book(title, author, pages, read);
-	if (title !== "") {
+	if (title !== "" || title !== " ") {
 		myLibrary.push(newBook);
 	} else {
 		return;
@@ -209,22 +209,20 @@ const createBook = (myLibrary) => {
 		const readButton = document.createElement("button");
 		const removeButton = document.createElement("button");
 
-		card.className =
-			"card text-center col-sm-5 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mx-4 my-3";
+		card.className = "card";
 		card.setAttribute("id", arrayPosition);
 		card.dataset.num = arrayPosition;
-		cardBody.className = "card-body p-3";
-		cardTitle.className = "card-title";
-		cardText.className = "card-text";
-		cardPages.className = "card-text";
-		buttonContainer.className =
-			"buttonContainer d-flex justify-content-center";
-		readButton.className = "button__read btn btn-dark m-1";
+		cardBody.className = "card-body book";
+		cardTitle.className = "card-title book__title";
+		cardText.className = "card-text book__author";
+		cardPages.className = "card-text book__pages";
+		buttonContainer.className = "buttonContainer";
+		readButton.className = "button__read";
 		readButton.onclick = changeRead;
-		removeButton.className = "button__remove btn btn-dark m-1";
+		removeButton.className = "button__remove";
 		removeButton.onclick = removeBook;
 
-		cardTitle.textContent = `"${i.title}"`;
+		cardTitle.textContent = `${i.title}`;
 		cardText.textContent = i.author;
 		cardPages.textContent = `${i.pages} pages`;
 		if (i.read === true) {
@@ -310,7 +308,7 @@ sortBookAuthorButton.addEventListener("click", (e) => {
 	createBook(myLibrary);
 });
 
-const submitButton = document.querySelector(".submitButton");
+const submitButton = document.querySelector(".submit__button");
 submitButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	addBook();
