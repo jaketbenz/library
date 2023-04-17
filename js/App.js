@@ -131,6 +131,29 @@ const authorInput = document.querySelector(".bookAuthor__input");
 const pagesInput = document.querySelector(".bookPages__input");
 const readInput = document.querySelector(".bookRead__input");
 
+(() => {
+	"use strict";
+
+	// Fetch all the forms we want to apply custom Bootstrap validation styles to
+	const forms = document.querySelectorAll(".needs-validation");
+
+	// Loop over them and prevent submission
+	Array.from(forms).forEach((form) => {
+		form.addEventListener(
+			"submit",
+			(event) => {
+				if (!form.checkValidity()) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+
+				form.classList.add("was-validated");
+			},
+			false
+		);
+	});
+})();
+
 const libraryShelf = document.querySelector(".library__body");
 
 const getReadInput = () => {
@@ -308,11 +331,11 @@ sortBookAuthorButton.addEventListener("click", (e) => {
 	createBook(myLibrary);
 });
 
-const submitButton = document.querySelector(".submit__button");
-submitButton.addEventListener("click", (e) => {
-	e.preventDefault();
-	addBook();
-	clearForm();
-	clearLibrary();
-	createBook(myLibrary);
-});
+// const submitButton = document.querySelector(".submit__button");
+// submitButton.addEventListener("click", (e) => {
+// 	e.preventDefault();
+// 	addBook();
+// 	clearForm();
+// 	clearLibrary();
+// 	createBook(myLibrary);
+// });

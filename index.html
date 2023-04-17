@@ -88,7 +88,8 @@
                             </div>
                             <div class="modal-body">
                                 <form
-                                    class="addBookForm p-3 rounded-3 align-self-center">
+                                    class="addBookForm p-3 rounded-3 align-self-center needs-validation"
+                                    novalidate>
                                     <h5 class="addBook__header fst-italic">
                                         Add To Library:</h5>
                                     <div class="bookTitle mb-3">
@@ -99,17 +100,21 @@
                                         </label>
                                         <input
                                             class="bookTitle__input form-control"
-                                            id="bookTitle" type="text">
+                                            id="bookTitle" type="text" required>
+                                        <div class="invalid-feedback">
+                                            Book Title Required
+                                        </div>
                                     </div>
                                     <div class="bookAuthor mb-3">
                                         <label
                                             class="bookAuthor__label form-label"
-                                            for="bookAuthor">
+                                            for="bookAuthor" required>
                                             Book Author:
                                         </label>
                                         <input
                                             class="bookAuthor__input form-control"
-                                            id="bookAuthor" type="text">
+                                            id="bookAuthor" type="text"
+                                            required>
                                     </div>
                                     <div class="bookPages mb-3">
                                         <label
@@ -119,7 +124,9 @@
                                         </label>
                                         <input
                                             class="bookPages__input form-control"
-                                            id="bookPages" type="text">
+                                            id="bookPages" type="number"
+                                            required minlength="1"
+                                            maxlength="5">
                                     </div>
                                     <div
                                         class="bookRead form-check d-flex justify-content-center mb-3">
@@ -141,7 +148,7 @@
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button class="submit__button" type="button"
+                                <button class="submit__button" type="submit"
                                     data-bs-dismiss="modal">
                                     Save Book
                                 </button>
